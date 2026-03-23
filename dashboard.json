@@ -1,1 +1,133 @@
-{"updated_at":"waiting for first cycle","mailboxes":[],"services":[],"replies":[],"alerts":[{"type":"warning","message":"Waiting for first data collection cycle..."}],"totals":{"sent_today":0,"daily_capacity":60,"total_sent_lifetime":0,"total_replies":0,"total_bounces":0,"warmup_sent":0}}
+{
+  "updated_at": "2026-03-23T02:21:38.882558+00:00",
+  "mailboxes": [
+    {
+      "email": "thomas@rankify.studio",
+      "daily_sent": 15,
+      "daily_limit": 15,
+      "warmup_status": "ACTIVE",
+      "warmup_reputation": 100,
+      "warmup_total_sent": 277,
+      "warmup_spam": 0,
+      "warmup_inbox_rate": 100
+    },
+    {
+      "email": "tom@rankify.studio",
+      "daily_sent": 15,
+      "daily_limit": 15,
+      "warmup_status": "ACTIVE",
+      "warmup_reputation": 99,
+      "warmup_total_sent": 274,
+      "warmup_spam": 2,
+      "warmup_inbox_rate": 100
+    },
+    {
+      "email": "tom@rankify.au",
+      "daily_sent": 12,
+      "daily_limit": 15,
+      "warmup_status": "ACTIVE",
+      "warmup_reputation": 100,
+      "warmup_total_sent": 274,
+      "warmup_spam": 0,
+      "warmup_inbox_rate": 100
+    },
+    {
+      "email": "tflood@rankify.au",
+      "daily_sent": 16,
+      "daily_limit": 15,
+      "warmup_status": "ACTIVE",
+      "warmup_reputation": 100,
+      "warmup_total_sent": 284,
+      "warmup_spam": 0,
+      "warmup_inbox_rate": 100
+    }
+  ],
+  "services": [
+    {
+      "name": "Logo & Branding",
+      "slug": "logo-branding",
+      "baseline_id": 3071050,
+      "challenger_id": 3071051,
+      "baseline": {
+        "sent": 0,
+        "opened": 0,
+        "replied": 0,
+        "bounced": 0
+      },
+      "challenger": {
+        "sent": 0,
+        "opened": 0,
+        "replied": 0,
+        "bounced": 0
+      },
+      "total_leads": 0
+    },
+    {
+      "name": "SEO Services",
+      "slug": "seo",
+      "baseline_id": 3071052,
+      "challenger_id": 3071053,
+      "baseline": {
+        "sent": 1,
+        "opened": 0,
+        "replied": 0,
+        "bounced": 0
+      },
+      "challenger": {
+        "sent": 0,
+        "opened": 0,
+        "replied": 0,
+        "bounced": 0
+      },
+      "total_leads": 0
+    },
+    {
+      "name": "Shopify Development",
+      "slug": "shopify-dev",
+      "baseline_id": 3071054,
+      "challenger_id": 3071055,
+      "baseline": {
+        "sent": 1,
+        "opened": 0,
+        "replied": 0,
+        "bounced": 0
+      },
+      "challenger": {
+        "sent": 1,
+        "opened": 0,
+        "replied": 0,
+        "bounced": 0
+      },
+      "total_leads": 0
+    },
+    {
+      "name": "Website Builds",
+      "slug": "website-builds",
+      "baseline_id": 3071056,
+      "challenger_id": 3071057,
+      "baseline": {
+        "sent": 1,
+        "opened": 0,
+        "replied": 0,
+        "bounced": 0
+      },
+      "challenger": {
+        "sent": 1,
+        "opened": 0,
+        "replied": 0,
+        "bounced": 0
+      },
+      "total_leads": 0
+    }
+  ],
+  "replies": [],
+  "alerts": [],
+  "totals": {
+    "sent_today": 58,
+    "daily_capacity": 60,
+    "total_sent_lifetime": 5,
+    "total_replies": 0,
+    "total_bounces": 0,
+    "warmup_sent": 1109
+  }
+}
