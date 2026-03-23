@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rankify AutoResearch — Cold Email Dashboard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0f;
+    --card: #12121a;
+    --card-border: #1e1e2e;
+    --text: #e4e4e7;
+    --text-dim: #71717a;
+    --green: #22c55e;
+    --green-bg: rgba(34, 197, 94, 0.1);
+    --red: #ef4444;
+    --red-bg: rgba(239, 68, 68, 0.1);
+    --orange: #f59e0b;
+    --orange-bg: rgba(245, 158, 11, 0.1);
+    --blue: #3b82f6;
+    --blue-bg: rgba(59, 130, 246, 0.1);
+    --purple: #a855f7;
+    --teal: #06b6d4;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    min-height: 100vh;
+    padding: 24px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
+  .header h1 span { color: var(--green); }
+
+  .updated {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .alerts {
+    margin-bottom: 24px;
+  }
+
+  .alert {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .alert.lead { background: var(--green-bg); border: 1px solid rgba(34,197,94,0.3); color: var(--green); }
+  .alert.error { background: var(--red-bg); border: 1px solid rgba(239,68,68,0.3); color: var(--red); }
+  .alert.warning { background: var(--orange-bg); border: 1px solid rgba(245,158,11,0.3); color: var(--orange); }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .stat-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  .stat-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--card-border);
+    border-radius: 3px;
+    margin-top: 12px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--green);
+    transition: width 0.5s ease;
+  }
+
+  .section-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .service-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .service-name {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .service-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .service-stat {
+    text-align: center;
+    padding: 10px;
+    background: rgba(255,255,255,0.02);
+    border-radius: 8px;
+  }
+
+  .service-stat .val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .service-stat .lbl {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+
+  .ab-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+
+  .ab-tag {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .ab-tag.baseline { background: var(--blue-bg); color: var(--blue); }
+  .ab-tag.challenger { background: rgba(168,85,247,0.1); color: var(--purple); }
+
+  .mailbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .mailbox-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 16px;
+    font-size: 13px;
+  }
+
+  .mailbox-email {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    margin-bottom: 10px;
+    color: var(--teal);
+  }
+
+  .mailbox-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    color: var(--text-dim);
+  }
+
+  .mailbox-row span:last-child {
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .replies-list {
+    margin-bottom: 32px;
+  }
+
+  .reply-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 10px;
+  }
+
+  .reply-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .reply-from {
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .reply-badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .reply-badge.warm { background: var(--green-bg); color: var(--green); }
+  .reply-badge.negative { background: var(--red-bg); color: var(--red); }
+  .reply-badge.unsubscribe { background: rgba(113,113,122,0.2); color: var(--text-dim); }
+  .reply-badge.auto_reply { background: var(--blue-bg); color: var(--blue); }
+  .reply-badge.unknown { background: var(--orange-bg); color: var(--orange); }
+
+  .reply-meta {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+
+  .reply-text {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text);
+    background: rgba(255,255,255,0.02);
+    padding: 10px;
+    border-radius: 6px;
+  }
+
+  .loading {
+    text-align: center;
+    padding: 60px;
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  .dot { 
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+  }
+  .dot.green { background: var(--green); }
+  .dot.red { background: var(--red); }
+  .dot.orange { background: var(--orange); }
+
+  @media (max-width: 600px) {
+    body { padding: 12px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-value { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Rankify <span>AutoResearch</span></h1>
+  <div class="updated" id="updated">Loading...</div>
+</div>
+
+<div class="alerts" id="alerts"></div>
+
+<div class="stats-grid" id="stats"></div>
+
+<div class="section-title">📧 Services</div>
+<div class="services-grid" id="services"></div>
+
+<div class="section-title">📬 Replies</div>
+<div class="replies-list" id="replies"></div>
+
+<div class="section-title">🔒 Mailboxes</div>
+<div class="mailbox-grid" id="mailboxes"></div>
+
+<script>
+const DATA_URL = 'dashboard.json';
+
+async function load() {
+  try {
+    const r = await fetch(DATA_URL + '?t=' + Date.now());
+    if (!r.ok) throw new Error('No data yet');
+    const d = await r.json();
+    render(d);
+  } catch (e) {
+    document.getElementById('updated').textContent = 'No data yet — waiting for first pipeline cycle';
+  }
+}
+
+function render(d) {
+  // Updated time
+  const t = new Date(d.updated_at);
+  const ago = Math.round((Date.now() - t.getTime()) / 60000);
+  document.getElementById('updated').textContent = 
+    ago < 60 ? `Updated ${ago}m ago` : 
+    ago < 1440 ? `Updated ${Math.round(ago/60)}h ago` : 
+    `Updated ${t.toLocaleDateString()}`;
+
+  // Alerts
+  const alertsEl = document.getElementById('alerts');
+  alertsEl.innerHTML = d.alerts.map(a => 
+    `<div class="alert ${a.type}">${a.message}</div>`
+  ).join('');
+
+  // Top stats
+  const pct = d.totals.daily_capacity > 0 
+    ? Math.round(d.totals.sent_today / d.totals.daily_capacity * 100) : 0;
+
+  document.getElementById('stats').innerHTML = `
+    <div class="stat-card">
+      <div class="stat-label">Sent Today</div>
+      <div class="stat-value">${d.totals.sent_today}/${d.totals.daily_capacity}</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Total Sent</div>
+      <div class="stat-value">${d.totals.total_sent_lifetime}</div>
+      <div class="stat-sub">lifetime</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Replies</div>
+      <div class="stat-value" style="color:var(--green)">${d.totals.total_replies}</div>
+      <div class="stat-sub">${d.totals.total_sent_lifetime > 0 ? (d.totals.total_replies / d.totals.total_sent_lifetime * 100).toFixed(1) : 0}% reply rate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Bounces</div>
+      <div class="stat-value" style="color:${d.totals.total_bounces > 10 ? 'var(--red)' : 'var(--text)'}">${d.totals.total_bounces}</div>
+      <div class="stat-sub">${d.totals.total_sent_lifetime > 0 ? (d.totals.total_bounces / d.totals.total_sent_lifetime * 100).toFixed(1) : 0}% bounce rate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Warmup Sent</div>
+      <div class="stat-value">${d.totals.warmup_sent}</div>
+      <div class="stat-sub">across all mailboxes</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Warm Leads</div>
+      <div class="stat-value" style="color:var(--green)">${d.replies.filter(r => r.category === 'warm').length}</div>
+      <div class="stat-sub">need follow-up</div>
+    </div>
+  `;
+
+  // Services
+  document.getElementById('services').innerHTML = d.services.map(s => {
+    const totalSent = s.baseline.sent + s.challenger.sent;
+    const totalReplied = s.baseline.replied + s.challenger.replied;
+    return `
+      <div class="service-card">
+        <div class="service-name">${s.name}</div>
+        <div class="service-stats">
+          <div class="service-stat"><div class="val">${totalSent}</div><div class="lbl">Sent</div></div>
+          <div class="service-stat"><div class="val" style="color:var(--green)">${totalReplied}</div><div class="lbl">Replies</div></div>
+          <div class="service-stat"><div class="val">${s.total_leads}</div><div class="lbl">Leads</div></div>
+          <div class="service-stat"><div class="val">${s.baseline.bounced + s.challenger.bounced}</div><div class="lbl">Bounced</div></div>
+        </div>
+        <div class="ab-row">
+          <span class="ab-tag baseline">B: ${s.baseline.sent} sent</span>
+          <span class="ab-tag challenger">C: ${s.challenger.sent} sent</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Replies — warm first
+  const sorted = [...d.replies].sort((a, b) => {
+    const order = {warm: 0, unknown: 1, auto_reply: 2, negative: 3, unsubscribe: 4};
+    return (order[a.category] || 5) - (order[b.category] || 5);
+  });
+
+  document.getElementById('replies').innerHTML = sorted.length > 0 
+    ? sorted.map(r => `
+      <div class="reply-card">
+        <div class="reply-header">
+          <span class="reply-from">${r.name} — ${r.company}</span>
+          <span class="reply-badge ${r.category}">${r.category.replace('_',' ')}</span>
+        </div>
+        <div class="reply-meta">${r.email} · ${r.campaign} · ${new Date(r.reply_time).toLocaleDateString()}</div>
+        <div class="reply-text">${r.reply_text}</div>
+      </div>
+    `).join('')
+    : '<div style="color:var(--text-dim);font-size:14px;padding:20px;">No replies yet</div>';
+
+  // Mailboxes
+  document.getElementById('mailboxes').innerHTML = d.mailboxes.map(m => `
+    <div class="mailbox-card">
+      <div class="mailbox-email">${m.email}</div>
+      <div class="mailbox-row"><span>Sent today</span><span>${m.daily_sent}/${m.daily_limit}</span></div>
+      <div class="mailbox-row"><span>Warmup</span><span><span class="dot ${m.warmup_status === 'ACTIVE' ? 'green' : 'red'}"></span>${m.warmup_status}</span></div>
+      <div class="mailbox-row"><span>Reputation</span><span>${m.warmup_reputation}/100</span></div>
+      <div class="mailbox-row"><span>Inbox rate</span><span>${m.warmup_inbox_rate}%</span></div>
+      <div class="mailbox-row"><span>Warmup sent</span><span>${m.warmup_total_sent}</span></div>
+    </div>
+  `).join('');
+}
+
+load();
+setInterval(load, 60000); // Refresh every 60s
+</script>
+</body>
+</html>
