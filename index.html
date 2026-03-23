@@ -3,455 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rankify AutoResearch — Cold Email Dashboard</title>
+<title>Rankify AutoResearch</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;600;700&display=swap');
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --bg: #0a0a0f;
-    --card: #12121a;
-    --card-border: #1e1e2e;
-    --text: #e4e4e7;
-    --text-dim: #71717a;
-    --green: #22c55e;
-    --green-bg: rgba(34, 197, 94, 0.1);
-    --red: #ef4444;
-    --red-bg: rgba(239, 68, 68, 0.1);
-    --orange: #f59e0b;
-    --orange-bg: rgba(245, 158, 11, 0.1);
-    --blue: #3b82f6;
-    --blue-bg: rgba(59, 130, 246, 0.1);
-    --purple: #a855f7;
-    --teal: #06b6d4;
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --glass:rgba(255,255,255,0.45);--glass-border:rgba(255,255,255,0.55);
+    --glass-shadow:0 8px 32px rgba(0,0,0,0.06);--blur:blur(20px);
+    --text:#1a1a2e;--dim:#6b7085;--green:#22c55e;--green-s:rgba(34,197,94,0.12);
+    --red:#ef4444;--red-s:rgba(239,68,68,0.1);--orange:#f59e0b;--orange-s:rgba(245,158,11,0.1);
+    --blue:#3b82f6;--blue-s:rgba(59,130,246,0.1);--purple:#8b5cf6;--purple-s:rgba(139,92,246,0.1);
+    --r:20px;
   }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Outfit', sans-serif;
-    min-height: 100vh;
-    padding: 24px;
+  body{
+    font-family:'DM Sans',-apple-system,sans-serif;min-height:100vh;
+    background:linear-gradient(135deg,#e8eaf6 0%,#f3e5f5 25%,#fce4ec 50%,#fff3e0 75%,#e8f5e9 100%);
+    background-attachment:fixed;color:var(--text);padding:28px;
   }
-
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 32px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--card-border);
-  }
-
-  .header h1 {
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-  }
-
-  .header h1 span { color: var(--green); }
-
-  .updated {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--text-dim);
-  }
-
-  .alerts {
-    margin-bottom: 24px;
-  }
-
-  .alert {
-    padding: 12px 16px;
-    border-radius: 8px;
-    margin-bottom: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .alert.lead { background: var(--green-bg); border: 1px solid rgba(34,197,94,0.3); color: var(--green); }
-  .alert.error { background: var(--red-bg); border: 1px solid rgba(239,68,68,0.3); color: var(--red); }
-  .alert.warning { background: var(--orange-bg); border: 1px solid rgba(245,158,11,0.3); color: var(--orange); }
-
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 16px;
-    margin-bottom: 32px;
-  }
-
-  .stat-card {
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    padding: 20px;
-  }
-
-  .stat-label {
-    font-size: 12px;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-  }
-
-  .stat-value {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 28px;
-    font-weight: 700;
-  }
-
-  .stat-sub {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--text-dim);
-    margin-top: 4px;
-  }
-
-  .progress-bar {
-    width: 100%;
-    height: 6px;
-    background: var(--card-border);
-    border-radius: 3px;
-    margin-top: 12px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    border-radius: 3px;
-    background: var(--green);
-    transition: width 0.5s ease;
-  }
-
-  .section-title {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 32px;
-  }
-
-  .service-card {
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    padding: 20px;
-  }
-
-  .service-name {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 16px;
-  }
-
-  .service-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
-  .service-stat {
-    text-align: center;
-    padding: 10px;
-    background: rgba(255,255,255,0.02);
-    border-radius: 8px;
-  }
-
-  .service-stat .val {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 20px;
-    font-weight: 700;
-  }
-
-  .service-stat .lbl {
-    font-size: 11px;
-    color: var(--text-dim);
-    margin-top: 2px;
-  }
-
-  .ab-row {
-    display: flex;
-    gap: 8px;
-    margin-top: 12px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-  }
-
-  .ab-tag {
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-weight: 600;
-  }
-
-  .ab-tag.baseline { background: var(--blue-bg); color: var(--blue); }
-  .ab-tag.challenger { background: rgba(168,85,247,0.1); color: var(--purple); }
-
-  .mailbox-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 12px;
-    margin-bottom: 32px;
-  }
-
-  .mailbox-card {
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 10px;
-    padding: 16px;
-    font-size: 13px;
-  }
-
-  .mailbox-email {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    margin-bottom: 10px;
-    color: var(--teal);
-  }
-
-  .mailbox-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 4px;
-    color: var(--text-dim);
-  }
-
-  .mailbox-row span:last-child {
-    color: var(--text);
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .replies-list {
-    margin-bottom: 32px;
-  }
-
-  .reply-card {
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 10px;
-    padding: 16px;
-    margin-bottom: 10px;
-  }
-
-  .reply-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-
-  .reply-from {
-    font-weight: 600;
-    font-size: 14px;
-  }
-
-  .reply-badge {
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-
-  .reply-badge.warm { background: var(--green-bg); color: var(--green); }
-  .reply-badge.negative { background: var(--red-bg); color: var(--red); }
-  .reply-badge.unsubscribe { background: rgba(113,113,122,0.2); color: var(--text-dim); }
-  .reply-badge.auto_reply { background: var(--blue-bg); color: var(--blue); }
-  .reply-badge.unknown { background: var(--orange-bg); color: var(--orange); }
-
-  .reply-meta {
-    font-size: 12px;
-    color: var(--text-dim);
-    margin-bottom: 8px;
-  }
-
-  .reply-text {
-    font-size: 13px;
-    line-height: 1.5;
-    color: var(--text);
-    background: rgba(255,255,255,0.02);
-    padding: 10px;
-    border-radius: 6px;
-  }
-
-  .loading {
-    text-align: center;
-    padding: 60px;
-    color: var(--text-dim);
-    font-size: 14px;
-  }
-
-  .dot { 
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    margin-right: 6px;
-  }
-  .dot.green { background: var(--green); }
-  .dot.red { background: var(--red); }
-  .dot.orange { background: var(--orange); }
-
-  @media (max-width: 600px) {
-    body { padding: 12px; }
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .stat-value { font-size: 22px; }
-  }
+  body::before,body::after{content:'';position:fixed;border-radius:50%;filter:blur(80px);opacity:0.4;z-index:0;pointer-events:none}
+  body::before{width:500px;height:500px;background:radial-gradient(circle,#c084fc,transparent 70%);top:-100px;right:-100px}
+  body::after{width:600px;height:600px;background:radial-gradient(circle,#60a5fa,transparent 70%);bottom:-150px;left:-100px}
+  .c{position:relative;z-index:1;max-width:1280px;margin:0 auto}
+  .header{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+  .header h1{font-size:26px;font-weight:700;letter-spacing:-0.5px}
+  .header h1 span{background:linear-gradient(135deg,#8b5cf6,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .updated{font-size:13px;color:var(--dim);background:var(--glass);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);padding:8px 16px;border-radius:50px;border:1px solid var(--glass-border)}
+  .g{background:var(--glass);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--glass-border);border-radius:var(--r);box-shadow:var(--glass-shadow)}
+  .alerts{margin-bottom:20px}
+  .alert{padding:14px 18px;border-radius:14px;margin-bottom:8px;font-size:14px;font-weight:500;display:flex;align-items:center;gap:10px;backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--glass-border)}
+  .alert.lead{background:var(--green-s);color:#15803d}
+  .alert.error{background:var(--red-s);color:#dc2626}
+  .alert.warning{background:var(--orange-s);color:#d97706}
+  .sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:28px}
+  .sc{padding:22px;transition:transform 0.2s}.sc:hover{transform:translateY(-2px)}
+  .sl{font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:0.8px;font-weight:500;margin-bottom:10px}
+  .sv{font-size:32px;font-weight:700;letter-spacing:-1px;line-height:1}
+  .ss{font-size:12px;color:var(--dim);margin-top:6px}
+  .pb{width:100%;height:6px;background:rgba(0,0,0,0.06);border-radius:3px;margin-top:14px;overflow:hidden}
+  .pf{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--green),#34d399);transition:width 0.5s}
+  .st{font-size:17px;font-weight:600;margin-bottom:14px}
+  .svg{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:28px}
+  .svc{padding:22px;transition:transform 0.2s}.svc:hover{transform:translateY(-2px)}
+  .sn{font-size:15px;font-weight:600;margin-bottom:18px}
+  .sst{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .si{text-align:center;padding:12px 8px;background:rgba(255,255,255,0.4);border-radius:12px;border:1px solid rgba(255,255,255,0.5)}
+  .si .v{font-size:22px;font-weight:700;letter-spacing:-0.5px}
+  .si .l{font-size:11px;color:var(--dim);margin-top:2px;font-weight:500}
+  .ab{display:flex;gap:8px;margin-top:14px;font-size:12px;font-weight:500}
+  .abt{padding:4px 10px;border-radius:8px;letter-spacing:0.3px}
+  .abt.b{background:var(--blue-s);color:var(--blue)}.abt.ch{background:var(--purple-s);color:var(--purple)}
+  .mg{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:28px}
+  .mc{padding:18px;font-size:13px}
+  .me{font-size:13px;font-weight:600;margin-bottom:12px;color:var(--purple)}
+  .mr{display:flex;justify-content:space-between;margin-bottom:6px;color:var(--dim)}
+  .mr span:last-child{color:var(--text);font-weight:600}
+  .rl{margin-bottom:28px}
+  .rc{padding:18px;margin-bottom:10px}
+  .rh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+  .rf{font-weight:600;font-size:14px}
+  .rb{padding:3px 10px;border-radius:8px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+  .rb.warm{background:var(--green-s);color:#15803d}
+  .rb.negative{background:var(--red-s);color:var(--red)}
+  .rb.unsubscribe{background:rgba(0,0,0,0.05);color:var(--dim)}
+  .rb.auto_reply{background:var(--blue-s);color:var(--blue)}
+  .rb.unknown{background:var(--orange-s);color:var(--orange)}
+  .rm{font-size:12px;color:var(--dim);margin-bottom:10px}
+  .rt{font-size:13px;line-height:1.6;background:rgba(255,255,255,0.4);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.5)}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+  .dot.gr{background:var(--green)}.dot.rd{background:var(--red)}
+  .es{text-align:center;padding:40px;color:var(--dim);font-size:14px}
+  @media(max-width:640px){body{padding:14px}.header{flex-direction:column;gap:10px;align-items:flex-start}.sg{grid-template-columns:repeat(2,1fr);gap:10px}.sv{font-size:24px}.svg{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-
-<div class="header">
-  <h1>Rankify <span>AutoResearch</span></h1>
-  <div class="updated" id="updated">Loading...</div>
+<div class="c">
+  <div class="header">
+    <h1>Rankify <span>AutoResearch</span></h1>
+    <div class="updated" id="updated">Loading...</div>
+  </div>
+  <div class="alerts" id="alerts"></div>
+  <div class="sg" id="stats"></div>
+  <div class="st">📧 Services</div>
+  <div class="svg" id="services"></div>
+  <div class="st">📬 Replies</div>
+  <div class="rl" id="replies"></div>
+  <div class="st">🔒 Mailboxes</div>
+  <div class="mg" id="mailboxes"></div>
 </div>
-
-<div class="alerts" id="alerts"></div>
-
-<div class="stats-grid" id="stats"></div>
-
-<div class="section-title">📧 Services</div>
-<div class="services-grid" id="services"></div>
-
-<div class="section-title">📬 Replies</div>
-<div class="replies-list" id="replies"></div>
-
-<div class="section-title">🔒 Mailboxes</div>
-<div class="mailbox-grid" id="mailboxes"></div>
-
 <script>
-const DATA_URL = 'dashboard.json';
-
-async function load() {
-  try {
-    const r = await fetch(DATA_URL + '?t=' + Date.now());
-    if (!r.ok) throw new Error('No data yet');
-    const d = await r.json();
-    render(d);
-  } catch (e) {
-    document.getElementById('updated').textContent = 'No data yet — waiting for first pipeline cycle';
-  }
+async function load(){
+  try{const r=await fetch('dashboard.json?t='+Date.now());if(!r.ok)throw 0;render(await r.json())}
+  catch(e){document.getElementById('updated').textContent='Waiting for data...'}
 }
-
-function render(d) {
-  // Updated time
-  const t = new Date(d.updated_at);
-  const ago = Math.round((Date.now() - t.getTime()) / 60000);
-  document.getElementById('updated').textContent = 
-    ago < 60 ? `Updated ${ago}m ago` : 
-    ago < 1440 ? `Updated ${Math.round(ago/60)}h ago` : 
-    `Updated ${t.toLocaleDateString()}`;
-
-  // Alerts
-  const alertsEl = document.getElementById('alerts');
-  alertsEl.innerHTML = d.alerts.map(a => 
-    `<div class="alert ${a.type}">${a.message}</div>`
-  ).join('');
-
-  // Top stats
-  const pct = d.totals.daily_capacity > 0 
-    ? Math.round(d.totals.sent_today / d.totals.daily_capacity * 100) : 0;
-
-  document.getElementById('stats').innerHTML = `
-    <div class="stat-card">
-      <div class="stat-label">Sent Today</div>
-      <div class="stat-value">${d.totals.sent_today}/${d.totals.daily_capacity}</div>
-      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Total Sent</div>
-      <div class="stat-value">${d.totals.total_sent_lifetime}</div>
-      <div class="stat-sub">lifetime</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Replies</div>
-      <div class="stat-value" style="color:var(--green)">${d.totals.total_replies}</div>
-      <div class="stat-sub">${d.totals.total_sent_lifetime > 0 ? (d.totals.total_replies / d.totals.total_sent_lifetime * 100).toFixed(1) : 0}% reply rate</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Bounces</div>
-      <div class="stat-value" style="color:${d.totals.total_bounces > 10 ? 'var(--red)' : 'var(--text)'}">${d.totals.total_bounces}</div>
-      <div class="stat-sub">${d.totals.total_sent_lifetime > 0 ? (d.totals.total_bounces / d.totals.total_sent_lifetime * 100).toFixed(1) : 0}% bounce rate</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Warmup Sent</div>
-      <div class="stat-value">${d.totals.warmup_sent}</div>
-      <div class="stat-sub">across all mailboxes</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Warm Leads</div>
-      <div class="stat-value" style="color:var(--green)">${d.replies.filter(r => r.category === 'warm').length}</div>
-      <div class="stat-sub">need follow-up</div>
-    </div>
-  `;
-
-  // Services
-  document.getElementById('services').innerHTML = d.services.map(s => {
-    const totalSent = s.baseline.sent + s.challenger.sent;
-    const totalReplied = s.baseline.replied + s.challenger.replied;
-    return `
-      <div class="service-card">
-        <div class="service-name">${s.name}</div>
-        <div class="service-stats">
-          <div class="service-stat"><div class="val">${totalSent}</div><div class="lbl">Sent</div></div>
-          <div class="service-stat"><div class="val" style="color:var(--green)">${totalReplied}</div><div class="lbl">Replies</div></div>
-          <div class="service-stat"><div class="val">${s.total_leads}</div><div class="lbl">Leads</div></div>
-          <div class="service-stat"><div class="val">${s.baseline.bounced + s.challenger.bounced}</div><div class="lbl">Bounced</div></div>
-        </div>
-        <div class="ab-row">
-          <span class="ab-tag baseline">B: ${s.baseline.sent} sent</span>
-          <span class="ab-tag challenger">C: ${s.challenger.sent} sent</span>
-        </div>
-      </div>
-    `;
-  }).join('');
-
-  // Replies — warm first
-  const sorted = [...d.replies].sort((a, b) => {
-    const order = {warm: 0, unknown: 1, auto_reply: 2, negative: 3, unsubscribe: 4};
-    return (order[a.category] || 5) - (order[b.category] || 5);
-  });
-
-  document.getElementById('replies').innerHTML = sorted.length > 0 
-    ? sorted.map(r => `
-      <div class="reply-card">
-        <div class="reply-header">
-          <span class="reply-from">${r.name} — ${r.company}</span>
-          <span class="reply-badge ${r.category}">${r.category.replace('_',' ')}</span>
-        </div>
-        <div class="reply-meta">${r.email} · ${r.campaign} · ${new Date(r.reply_time).toLocaleDateString()}</div>
-        <div class="reply-text">${r.reply_text}</div>
-      </div>
-    `).join('')
-    : '<div style="color:var(--text-dim);font-size:14px;padding:20px;">No replies yet</div>';
-
-  // Mailboxes
-  document.getElementById('mailboxes').innerHTML = d.mailboxes.map(m => `
-    <div class="mailbox-card">
-      <div class="mailbox-email">${m.email}</div>
-      <div class="mailbox-row"><span>Sent today</span><span>${m.daily_sent}/${m.daily_limit}</span></div>
-      <div class="mailbox-row"><span>Warmup</span><span><span class="dot ${m.warmup_status === 'ACTIVE' ? 'green' : 'red'}"></span>${m.warmup_status}</span></div>
-      <div class="mailbox-row"><span>Reputation</span><span>${m.warmup_reputation}/100</span></div>
-      <div class="mailbox-row"><span>Inbox rate</span><span>${m.warmup_inbox_rate}%</span></div>
-      <div class="mailbox-row"><span>Warmup sent</span><span>${m.warmup_total_sent}</span></div>
-    </div>
-  `).join('');
+function render(d){
+  const t=new Date(d.updated_at),ago=Math.round((Date.now()-t.getTime())/60000);
+  document.getElementById('updated').textContent=ago<60?`Updated ${ago}m ago`:ago<1440?`Updated ${Math.round(ago/60)}h ago`:`Updated ${t.toLocaleDateString()}`;
+  document.getElementById('alerts').innerHTML=d.alerts.map(a=>`<div class="alert ${a.type}">${a.message}</div>`).join('');
+  const pct=d.totals.daily_capacity>0?Math.round(d.totals.sent_today/d.totals.daily_capacity*100):0;
+  const wl=d.replies.filter(r=>r.category==='warm').length;
+  document.getElementById('stats').innerHTML=`
+    <div class="sc g"><div class="sl">Sent Today</div><div class="sv">${d.totals.sent_today}<span style="font-size:16px;color:var(--dim);font-weight:400">/${d.totals.daily_capacity}</span></div><div class="pb"><div class="pf" style="width:${Math.min(pct,100)}%"></div></div></div>
+    <div class="sc g"><div class="sl">Total Sent</div><div class="sv">${d.totals.total_sent_lifetime}</div><div class="ss">lifetime</div></div>
+    <div class="sc g"><div class="sl">Replies</div><div class="sv" style="color:var(--green)">${d.totals.total_replies}</div><div class="ss">${d.totals.total_sent_lifetime>0?(d.totals.total_replies/d.totals.total_sent_lifetime*100).toFixed(1):0}% reply rate</div></div>
+    <div class="sc g"><div class="sl">Bounces</div><div class="sv">${d.totals.total_bounces}</div><div class="ss">${d.totals.total_sent_lifetime>0?(d.totals.total_bounces/d.totals.total_sent_lifetime*100).toFixed(1):0}% bounce rate</div></div>
+    <div class="sc g"><div class="sl">Warmup Sent</div><div class="sv">${d.totals.warmup_sent}</div><div class="ss">all mailboxes</div></div>
+    <div class="sc g"><div class="sl">Warm Leads</div><div class="sv" style="color:${wl>0?'var(--green)':'var(--text)'}">${wl}</div><div class="ss">${wl>0?'need follow-up!':'none yet'}</div></div>`;
+  document.getElementById('services').innerHTML=d.services.map(s=>{
+    const ts=s.baseline.sent+s.challenger.sent,tr=s.baseline.replied+s.challenger.replied,tb=s.baseline.bounced+s.challenger.bounced;
+    return`<div class="svc g"><div class="sn">${s.name}</div><div class="sst">
+      <div class="si"><div class="v">${ts}</div><div class="l">Sent</div></div>
+      <div class="si"><div class="v" style="color:var(--green)">${tr}</div><div class="l">Replies</div></div>
+      <div class="si"><div class="v">${s.total_leads}</div><div class="l">Leads</div></div>
+      <div class="si"><div class="v">${tb}</div><div class="l">Bounced</div></div></div>
+      <div class="ab"><span class="abt b">B: ${s.baseline.sent} sent</span><span class="abt ch">C: ${s.challenger.sent} sent</span></div></div>`}).join('');
+  const sorted=[...d.replies].sort((a,b)=>{const o={warm:0,unknown:1,auto_reply:2,negative:3,unsubscribe:4};return(o[a.category]||5)-(o[b.category]||5)});
+  document.getElementById('replies').innerHTML=sorted.length>0?sorted.map(r=>`
+    <div class="rc g"><div class="rh"><span class="rf">${r.name} — ${r.company}</span><span class="rb ${r.category}">${r.category.replace('_',' ')}</span></div>
+    <div class="rm">${r.email} · ${r.campaign} · ${new Date(r.reply_time).toLocaleDateString()}</div>
+    <div class="rt">${r.reply_text}</div></div>`).join(''):'<div class="g es">No replies yet — emails are going out</div>';
+  document.getElementById('mailboxes').innerHTML=d.mailboxes.map(m=>`
+    <div class="mc g"><div class="me">${m.email}</div>
+    <div class="mr"><span>Sent today</span><span>${m.daily_sent}/${m.daily_limit}</span></div>
+    <div class="mr"><span>Warmup</span><span><span class="dot ${m.warmup_status==='ACTIVE'?'gr':'rd'}"></span>${m.warmup_status}</span></div>
+    <div class="mr"><span>Reputation</span><span>${m.warmup_reputation}/100</span></div>
+    <div class="mr"><span>Inbox rate</span><span>${m.warmup_inbox_rate}%</span></div>
+    <div class="mr"><span>Warmup sent</span><span>${m.warmup_total_sent}</span></div></div>`).join('');
 }
-
-load();
-setInterval(load, 60000); // Refresh every 60s
+load();setInterval(load,60000);
 </script>
 </body>
 </html>
