@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-27T02:42:18.010558+00:00",
+  "updated_at": "2026-03-27T02:59:30.905994+00:00",
   "mailboxes": [
     {
       "email": "thomas@rankify.studio",
@@ -23,7 +23,7 @@
     },
     {
       "email": "tom@rankify.au",
-      "daily_sent": 4,
+      "daily_sent": 6,
       "daily_limit": 15,
       "warmup_status": "ACTIVE",
       "warmup_reputation": 100,
@@ -68,7 +68,7 @@
       "baseline_id": 3071052,
       "challenger_id": 3071053,
       "baseline": {
-        "sent": 7,
+        "sent": 8,
         "opened": 0,
         "replied": 0,
         "bounced": 0
@@ -93,7 +93,7 @@
         "bounced": 0
       },
       "challenger": {
-        "sent": 11,
+        "sent": 12,
         "opened": 0,
         "replied": 0,
         "bounced": 1
@@ -123,9 +123,9 @@
   "replies": [],
   "alerts": [],
   "totals": {
-    "sent_today": 5,
+    "sent_today": 7,
     "daily_capacity": 60,
-    "total_sent_lifetime": 55,
+    "total_sent_lifetime": 57,
     "total_replies": 0,
     "total_bounces": 2,
     "warmup_sent": 1013
