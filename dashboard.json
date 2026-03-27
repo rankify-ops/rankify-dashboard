@@ -1,43 +1,43 @@
 {
-  "updated_at": "2026-03-24T08:21:45.192414+00:00",
+  "updated_at": "2026-03-27T01:35:44.185928+00:00",
   "mailboxes": [
     {
       "email": "thomas@rankify.studio",
-      "daily_sent": 2,
+      "daily_sent": 0,
       "daily_limit": 15,
       "warmup_status": "ACTIVE",
       "warmup_reputation": 100,
-      "warmup_total_sent": 272,
+      "warmup_total_sent": 250,
       "warmup_spam": 0,
       "warmup_inbox_rate": 100
     },
     {
       "email": "tom@rankify.studio",
-      "daily_sent": 6,
+      "daily_sent": 0,
       "daily_limit": 15,
       "warmup_status": "ACTIVE",
-      "warmup_reputation": 99,
-      "warmup_total_sent": 272,
-      "warmup_spam": 2,
+      "warmup_reputation": 100,
+      "warmup_total_sent": 256,
+      "warmup_spam": 0,
       "warmup_inbox_rate": 100
     },
     {
       "email": "tom@rankify.au",
-      "daily_sent": 8,
+      "daily_sent": 0,
       "daily_limit": 15,
       "warmup_status": "ACTIVE",
       "warmup_reputation": 100,
-      "warmup_total_sent": 268,
+      "warmup_total_sent": 250,
       "warmup_spam": 0,
       "warmup_inbox_rate": 100
     },
     {
       "email": "tflood@rankify.au",
-      "daily_sent": 2,
+      "daily_sent": 0,
       "daily_limit": 15,
       "warmup_status": "ACTIVE",
       "warmup_reputation": 100,
-      "warmup_total_sent": 281,
+      "warmup_total_sent": 255,
       "warmup_spam": 0,
       "warmup_inbox_rate": 100
     }
@@ -49,26 +49,7 @@
       "baseline_id": 3071050,
       "challenger_id": 3071051,
       "baseline": {
-        "sent": 2,
-        "opened": 0,
-        "replied": 0,
-        "bounced": 0
-      },
-      "challenger": {
-        "sent": 2,
-        "opened": 0,
-        "replied": 0,
-        "bounced": 0
-      },
-      "total_leads": 0
-    },
-    {
-      "name": "SEO Services",
-      "slug": "seo",
-      "baseline_id": 3071052,
-      "challenger_id": 3071053,
-      "baseline": {
-        "sent": 3,
+        "sent": 4,
         "opened": 0,
         "replied": 0,
         "bounced": 0
@@ -82,18 +63,37 @@
       "total_leads": 0
     },
     {
-      "name": "Shopify Development",
-      "slug": "shopify-dev",
-      "baseline_id": 3071054,
-      "challenger_id": 3071055,
+      "name": "SEO Services",
+      "slug": "seo",
+      "baseline_id": 3071052,
+      "challenger_id": 3071053,
       "baseline": {
-        "sent": 5,
+        "sent": 6,
         "opened": 0,
         "replied": 0,
         "bounced": 0
       },
       "challenger": {
-        "sent": 5,
+        "sent": 8,
+        "opened": 0,
+        "replied": 0,
+        "bounced": 0
+      },
+      "total_leads": 0
+    },
+    {
+      "name": "Shopify Development",
+      "slug": "shopify-dev",
+      "baseline_id": 3071054,
+      "challenger_id": 3071055,
+      "baseline": {
+        "sent": 10,
+        "opened": 0,
+        "replied": 0,
+        "bounced": 0
+      },
+      "challenger": {
+        "sent": 9,
         "opened": 0,
         "replied": 0,
         "bounced": 1
@@ -106,13 +106,13 @@
       "baseline_id": 3071056,
       "challenger_id": 3071057,
       "baseline": {
-        "sent": 2,
+        "sent": 4,
         "opened": 0,
         "replied": 0,
         "bounced": 0
       },
       "challenger": {
-        "sent": 3,
+        "sent": 5,
         "opened": 0,
         "replied": 0,
         "bounced": 1
@@ -121,18 +121,13 @@
     }
   ],
   "replies": [],
-  "alerts": [
-    {
-      "type": "error",
-      "message": "Bounce rate at 7.7% \u2014 check lead quality"
-    }
-  ],
+  "alerts": [],
   "totals": {
-    "sent_today": 18,
+    "sent_today": 0,
     "daily_capacity": 60,
-    "total_sent_lifetime": 26,
+    "total_sent_lifetime": 50,
     "total_replies": 0,
     "total_bounces": 2,
-    "warmup_sent": 1093
+    "warmup_sent": 1011
   }
 }
