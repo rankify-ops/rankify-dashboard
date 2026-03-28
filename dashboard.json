@@ -1,45 +1,45 @@
 {
-  "updated_at": "2026-03-28T12:47:06.850467+00:00",
+  "updated_at": "2026-03-28T13:10:43.681691+00:00",
   "mailboxes": [
     {
-      "email": "thomas@rankify.studio",
+      "email": "?",
       "daily_sent": 0,
-      "daily_limit": 15,
-      "warmup_status": "ACTIVE",
-      "warmup_reputation": 100,
-      "warmup_total_sent": 215,
+      "daily_limit": 0,
+      "warmup_status": "?",
+      "warmup_reputation": "?",
+      "warmup_total_sent": 0,
       "warmup_spam": 0,
-      "warmup_inbox_rate": 100
+      "warmup_inbox_rate": 0
     },
     {
-      "email": "tom@rankify.studio",
+      "email": "?",
       "daily_sent": 0,
-      "daily_limit": 15,
-      "warmup_status": "ACTIVE",
-      "warmup_reputation": 100,
-      "warmup_total_sent": 265,
+      "daily_limit": 0,
+      "warmup_status": "?",
+      "warmup_reputation": "?",
+      "warmup_total_sent": 0,
       "warmup_spam": 0,
-      "warmup_inbox_rate": 100
+      "warmup_inbox_rate": 0
     },
     {
-      "email": "tom@rankify.au",
+      "email": "?",
       "daily_sent": 0,
-      "daily_limit": 15,
-      "warmup_status": "ACTIVE",
-      "warmup_reputation": 100,
-      "warmup_total_sent": 217,
+      "daily_limit": 0,
+      "warmup_status": "?",
+      "warmup_reputation": "?",
+      "warmup_total_sent": 0,
       "warmup_spam": 0,
-      "warmup_inbox_rate": 100
+      "warmup_inbox_rate": 0
     },
     {
-      "email": "tflood@rankify.au",
+      "email": "?",
       "daily_sent": 0,
-      "daily_limit": 15,
-      "warmup_status": "ACTIVE",
-      "warmup_reputation": 100,
-      "warmup_total_sent": 208,
+      "daily_limit": 0,
+      "warmup_status": "?",
+      "warmup_reputation": "?",
+      "warmup_total_sent": 0,
       "warmup_spam": 0,
-      "warmup_inbox_rate": 100
+      "warmup_inbox_rate": 0
     }
   ],
   "services": [
@@ -49,13 +49,13 @@
       "baseline_id": 3071050,
       "challenger_id": 3071051,
       "baseline": {
-        "sent": 4,
+        "sent": 0,
         "opened": 0,
         "replied": 0,
         "bounced": 0
       },
       "challenger": {
-        "sent": 4,
+        "sent": 0,
         "opened": 0,
         "replied": 0,
         "bounced": 0
@@ -68,7 +68,7 @@
       "baseline_id": 3071052,
       "challenger_id": 3071053,
       "baseline": {
-        "sent": 8,
+        "sent": 0,
         "opened": 0,
         "replied": 0,
         "bounced": 0
@@ -124,10 +124,10 @@
   "alerts": [],
   "totals": {
     "sent_today": 0,
-    "daily_capacity": 60,
-    "total_sent_lifetime": 57,
+    "daily_capacity": 0,
+    "total_sent_lifetime": 41,
     "total_replies": 0,
     "total_bounces": 2,
-    "warmup_sent": 905
+    "warmup_sent": 0
   }
 }
