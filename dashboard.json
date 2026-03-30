@@ -1,35 +1,35 @@
 {
-  "updated_at": "2026-03-30T07:54:23.385789+00:00",
+  "updated_at": "2026-03-30T09:07:46.716906+00:00",
   "mailboxes": [
     {
-      "email": "?",
+      "email": "thomas@rankify.studio",
       "daily_sent": 0,
-      "daily_limit": 0,
-      "warmup_status": "?",
-      "warmup_reputation": "?",
-      "warmup_total_sent": 0,
+      "daily_limit": 15,
+      "warmup_status": "ACTIVE",
+      "warmup_reputation": 100,
+      "warmup_total_sent": 218,
       "warmup_spam": 0,
-      "warmup_inbox_rate": 0
+      "warmup_inbox_rate": 100
     },
     {
-      "email": "?",
+      "email": "tom@rankify.studio",
       "daily_sent": 0,
-      "daily_limit": 0,
-      "warmup_status": "?",
-      "warmup_reputation": "?",
-      "warmup_total_sent": 0,
+      "daily_limit": 15,
+      "warmup_status": "ACTIVE",
+      "warmup_reputation": 100,
+      "warmup_total_sent": 252,
       "warmup_spam": 0,
-      "warmup_inbox_rate": 0
+      "warmup_inbox_rate": 100
     },
     {
-      "email": "?",
+      "email": "tom@rankify.au",
       "daily_sent": 0,
-      "daily_limit": 0,
-      "warmup_status": "?",
-      "warmup_reputation": "?",
-      "warmup_total_sent": 0,
+      "daily_limit": 15,
+      "warmup_status": "ACTIVE",
+      "warmup_reputation": 100,
+      "warmup_total_sent": 222,
       "warmup_spam": 0,
-      "warmup_inbox_rate": 0
+      "warmup_inbox_rate": 100
     },
     {
       "email": "tflood@rankify.au",
@@ -124,10 +124,10 @@
   "alerts": [],
   "totals": {
     "sent_today": 0,
-    "daily_capacity": 15,
+    "daily_capacity": 60,
     "total_sent_lifetime": 74,
     "total_replies": 0,
     "total_bounces": 2,
-    "warmup_sent": 185
+    "warmup_sent": 877
   }
 }
