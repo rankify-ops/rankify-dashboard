@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-31T19:13:26.531932+00:00",
+  "updated_at": "2026-03-31T19:55:57.200755+00:00",
   "mailboxes": [
     {
       "email": "thomas@rankify.studio",
@@ -7,7 +7,7 @@
       "daily_limit": 15,
       "warmup_status": "ACTIVE",
       "warmup_reputation": 100,
-      "warmup_total_sent": 183,
+      "warmup_total_sent": 181,
       "warmup_spam": 0,
       "warmup_inbox_rate": 100
     },
@@ -17,7 +17,7 @@
       "daily_limit": 15,
       "warmup_status": "ACTIVE",
       "warmup_reputation": 100,
-      "warmup_total_sent": 194,
+      "warmup_total_sent": 193,
       "warmup_spam": 0,
       "warmup_inbox_rate": 100
     },
@@ -49,13 +49,13 @@
       "baseline_id": 3071050,
       "challenger_id": 3071051,
       "baseline": {
-        "sent": 6,
+        "sent": 0,
         "opened": 0,
         "replied": 0,
         "bounced": 0
       },
       "challenger": {
-        "sent": 6,
+        "sent": 0,
         "opened": 0,
         "replied": 0,
         "bounced": 0
@@ -74,7 +74,7 @@
         "bounced": 0
       },
       "challenger": {
-        "sent": 12,
+        "sent": 0,
         "opened": 0,
         "replied": 0,
         "bounced": 0
@@ -125,9 +125,9 @@
   "totals": {
     "sent_today": 0,
     "daily_capacity": 60,
-    "total_sent_lifetime": 74,
+    "total_sent_lifetime": 50,
     "total_replies": 0,
     "total_bounces": 2,
-    "warmup_sent": 783
+    "warmup_sent": 780
   }
 }
