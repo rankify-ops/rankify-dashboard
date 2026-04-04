@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-04T02:46:33.187850+00:00",
+  "updated_at": "2026-04-04T04:14:48.676218+00:00",
   "mailboxes": [
     {
       "email": "thomas@rankify.studio",
@@ -27,7 +27,7 @@
       "daily_limit": 15,
       "warmup_status": "ACTIVE",
       "warmup_reputation": 100,
-      "warmup_total_sent": 224,
+      "warmup_total_sent": 223,
       "warmup_spam": 0,
       "warmup_inbox_rate": 100
     },
@@ -37,7 +37,7 @@
       "daily_limit": 15,
       "warmup_status": "ACTIVE",
       "warmup_reputation": 100,
-      "warmup_total_sent": 192,
+      "warmup_total_sent": 193,
       "warmup_spam": 0,
       "warmup_inbox_rate": 100
     }
