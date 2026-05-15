@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-15T04:03:36.569938+00:00",
+  "updated_at": "2026-05-15T06:31:12.024165+00:00",
   "mailboxes": [
     {
       "email": "thomas@rankify.studio",
@@ -55,7 +55,7 @@
         "bounced": 0
       },
       "challenger": {
-        "sent": 0,
+        "sent": 6,
         "opened": 0,
         "replied": 0,
         "bounced": 0
@@ -125,7 +125,7 @@
   "totals": {
     "sent_today": 0,
     "daily_capacity": 60,
-    "total_sent_lifetime": 68,
+    "total_sent_lifetime": 74,
     "total_replies": 0,
     "total_bounces": 2,
     "warmup_sent": 1043
