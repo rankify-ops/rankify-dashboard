@@ -1,42 +1,42 @@
 {
-  "updated_at": "2026-07-15T05:26:08.070929+00:00",
+  "updated_at": "2026-07-15T08:00:45.144495+00:00",
   "mailboxes": [
     {
-      "email": "?",
+      "email": "thomas@rankify.studio",
       "daily_sent": 0,
-      "daily_limit": 0,
-      "warmup_status": "?",
-      "warmup_reputation": "?",
+      "daily_limit": 15,
+      "warmup_status": "INACTIVE",
+      "warmup_reputation": 100,
       "warmup_total_sent": 0,
       "warmup_spam": 0,
       "warmup_inbox_rate": 0
     },
     {
-      "email": "?",
+      "email": "tom@rankify.studio",
       "daily_sent": 0,
-      "daily_limit": 0,
-      "warmup_status": "?",
-      "warmup_reputation": "?",
+      "daily_limit": 15,
+      "warmup_status": "INACTIVE",
+      "warmup_reputation": 100,
       "warmup_total_sent": 0,
       "warmup_spam": 0,
       "warmup_inbox_rate": 0
     },
     {
-      "email": "?",
+      "email": "tom@rankify.au",
       "daily_sent": 0,
-      "daily_limit": 0,
-      "warmup_status": "?",
-      "warmup_reputation": "?",
+      "daily_limit": 15,
+      "warmup_status": "INACTIVE",
+      "warmup_reputation": 100,
       "warmup_total_sent": 0,
       "warmup_spam": 0,
       "warmup_inbox_rate": 0
     },
     {
-      "email": "?",
+      "email": "tflood@rankify.au",
       "daily_sent": 0,
-      "daily_limit": 0,
-      "warmup_status": "?",
-      "warmup_reputation": "?",
+      "daily_limit": 15,
+      "warmup_status": "INACTIVE",
+      "warmup_reputation": 100,
       "warmup_total_sent": 0,
       "warmup_spam": 0,
       "warmup_inbox_rate": 0
@@ -49,13 +49,13 @@
       "baseline_id": 3071050,
       "challenger_id": 3071051,
       "baseline": {
-        "sent": 0,
+        "sent": 6,
         "opened": 0,
         "replied": 0,
         "bounced": 0
       },
       "challenger": {
-        "sent": 0,
+        "sent": 6,
         "opened": 0,
         "replied": 0,
         "bounced": 0
@@ -68,13 +68,13 @@
       "baseline_id": 3071052,
       "challenger_id": 3071053,
       "baseline": {
-        "sent": 0,
+        "sent": 9,
         "opened": 0,
         "replied": 0,
         "bounced": 0
       },
       "challenger": {
-        "sent": 0,
+        "sent": 12,
         "opened": 0,
         "replied": 0,
         "bounced": 0
@@ -87,16 +87,16 @@
       "baseline_id": 3071054,
       "challenger_id": 3071055,
       "baseline": {
-        "sent": 0,
+        "sent": 15,
         "opened": 0,
         "replied": 0,
         "bounced": 0
       },
       "challenger": {
-        "sent": 0,
+        "sent": 13,
         "opened": 0,
         "replied": 0,
-        "bounced": 0
+        "bounced": 1
       },
       "total_leads": 0
     },
@@ -106,16 +106,16 @@
       "baseline_id": 3071056,
       "challenger_id": 3071057,
       "baseline": {
-        "sent": 0,
+        "sent": 6,
         "opened": 0,
         "replied": 0,
         "bounced": 0
       },
       "challenger": {
-        "sent": 0,
+        "sent": 7,
         "opened": 0,
         "replied": 0,
-        "bounced": 0
+        "bounced": 1
       },
       "total_leads": 0
     }
@@ -124,10 +124,10 @@
   "alerts": [],
   "totals": {
     "sent_today": 0,
-    "daily_capacity": 0,
-    "total_sent_lifetime": 0,
+    "daily_capacity": 60,
+    "total_sent_lifetime": 74,
     "total_replies": 0,
-    "total_bounces": 0,
+    "total_bounces": 2,
     "warmup_sent": 0
   }
 }
